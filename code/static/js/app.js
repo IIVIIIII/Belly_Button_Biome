@@ -2,7 +2,7 @@
 d3.json("samples.json").then(function (data) {
 
     var options = d3.select("#selDataset").selectAll("option");
-
+//
     options.data(data.names)
         .enter()
         .append("option")
@@ -12,7 +12,7 @@ d3.json("samples.json").then(function (data) {
 });
 
 function optionChanged(value) {
-    
+
     var sample = {}
 
     d3.json("samples.json").then(function (data) {
