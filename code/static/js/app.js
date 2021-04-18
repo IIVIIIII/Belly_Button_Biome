@@ -36,7 +36,7 @@ function optionChanged(value) {
         var trace = {
             x: sample.sample_values,
             y: sample.otu_ids,
-            text: yValue.map(String),
+            text: sample.otu_labels,
             orientation: "h",
             type: "bar"
         }
