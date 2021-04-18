@@ -21,10 +21,10 @@ function optionChanged(value) {
             sample_values: []
         }
 
+
         data.samples.forEach(s => {
             if (s.id == value) {
                 for (i = 0; i < 10; i++) {
-                
                     sample.otu_ids.push(`OTU ${s.otu_ids[i]}`);
                     sample.otu_labels.push(s.otu_labels[i]);
                     sample.sample_values.push(s.sample_values[i]);
@@ -35,7 +35,24 @@ function optionChanged(value) {
             }
         })
 
-        // data.metadata.forEach(function(s))
+        data.metadata.forEach(s => {
+            if (s.id == value) {
+                var subject = [];
+
+                Object.entries(s).forEach(([key, value]) => {
+                    subject.push(`${key}: ${value}`)
+                })
+
+                console.log(subject)
+
+                // d3.select("#selDataset").selectAll("option")
+                //     .data(data.names)
+                //     .enter()
+                //     .append("option")
+                //     .attr("id", id => id)
+                //     .text(d => d)
+            }
+        })
 
         var trace = {
             x: sample.sample_values,
