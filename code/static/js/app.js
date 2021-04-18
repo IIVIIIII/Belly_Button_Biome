@@ -24,8 +24,8 @@ function optionChanged(value) {
         data.samples.forEach(function(s) {
             if (s.id == value) {
                 for (i = 0; i < 10; i++) {
-                    sample.otu_ids.push(s.otu_ids[i]);
-                    sample.otu_labels.push(s.otu_labels[i]);
+                    sample.otu_ids.push(`OTU ${s.otu_ids[i]}`);
+                    sample.otu_labels.push(String(s.otu_labels[i]));
                     sample.sample_values.push(s.sample_values[i]);
                 }
             }
@@ -34,14 +34,15 @@ function optionChanged(value) {
         console.log(sample)
 
         var trace = {
-            x: sample.otu_lables,
-            y: sample.sample_values,
+            x: sample.sample_values,
+            y: sample.otu_ids,
+            text: yValue.map(String),
+            orientation: "h",
             type: "bar"
         }
     
         var layout = {
             title: "biodiversity",
-            barmode: "group"
         }
     
         Plotly.newPlot("bar", [trace], layout);
