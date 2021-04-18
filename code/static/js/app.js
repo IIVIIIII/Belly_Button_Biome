@@ -13,17 +13,24 @@ d3.json("samples.json").then(function (data) {
 
 function optionChanged(value) {
 
-    var sample = {}
-
     d3.json("samples.json").then(function (data) {
+
+        sample = {
+            otu_ids: [],
+            otu_labels: [],
+            sample_values: []
+        }
 
         data.samples.forEach(function(s) {
             if (s.id == value) {
-                    sample = s
+                for (i = 0; i < 10; i++) {
+                    sample.otu_ids.push(s.otu_ids[i]);
+                    sample.otu_labels.push(s.otu_labels[i]);
+                    sample.sample_values.push(s.sample_values[i]);
+                }
             }
         })
-    
-
+        
         console.log(sample)
 
         var trace = {
