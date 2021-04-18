@@ -1,5 +1,5 @@
 
-d3.json("samples.json").then(function (data) {
+d3.json("samples.json").then(data => {
 
     var options = d3.select("#selDataset").selectAll("option");
 
@@ -13,7 +13,7 @@ d3.json("samples.json").then(function (data) {
 
 function optionChanged(value) {
 
-    d3.json("samples.json").then(function (data) {
+    d3.json("samples.json").then(data => {
 
         sample = {
             otu_ids: [],
@@ -21,7 +21,7 @@ function optionChanged(value) {
             sample_values: []
         }
 
-        data.samples.forEach(function(s) {
+        data.samples.forEach(s => {
             if (s.id == value) {
                 for (i = 0; i < 10; i++) {
                 
@@ -34,8 +34,8 @@ function optionChanged(value) {
             sample.sample_values.sort((a, b) => a - b);
             }
         })
-        
-        console.log(sample)
+
+        // data.metadata.forEach(function(s))
 
         var trace = {
             x: sample.sample_values,
