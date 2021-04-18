@@ -17,31 +17,37 @@ function optionChanged(value) {
 
     d3.json("samples.json").then(function (data) {
 
-        function get() {
-            data.samples.forEach(function(s) {
-                if (s.id == value) {
+        data.samples.forEach(function(s) {
+            if (s.id == value) {
                     sample = s
-                }
-            })
+            }
+        })
+    
+
+        console.log(sample)
+
+        var trace = {
+            x: sample.otu_lables,
+            y: sample.sample_values,
+            type: "bar"
         }
-        get()
+    
+        var layout = {
+            title: "biodiversity",
+            barmode: "group"
+        }
+    
+        Plotly.newPlot("bar", [trace], layout);
+    
+
+
 
     })
 
+    
 
-    console.log(sample)
+}
+    
 
-//     var trace = {
-//         x: sample.otu_lables,
-//         y: sample.sample_values,
-//         type: "bar"
-//     }
 
-//     var layout = {
-//         title: "biodiversity",
-//         barmode: "group"
-//     }
-
-//     Plotly.newPlot("bar", [trace], layout);
-// }
 
