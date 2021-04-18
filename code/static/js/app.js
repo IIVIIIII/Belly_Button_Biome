@@ -24,10 +24,14 @@ function optionChanged(value) {
         data.samples.forEach(function(s) {
             if (s.id == value) {
                 for (i = 0; i < 10; i++) {
+                
                     sample.otu_ids.push(`OTU ${s.otu_ids[i]}`);
                     sample.otu_labels.push(s.otu_labels[i]);
                     sample.sample_values.push(s.sample_values[i]);
                 }
+            sample.otu_ids.sort((a, b) => a - b);
+            sample.otu_labels.sort((a, b) => a - b);
+            sample.sample_values.sort((a, b) => a - b);
             }
         })
         
