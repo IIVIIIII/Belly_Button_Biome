@@ -25,7 +25,7 @@ function optionChanged(value) {
             if (s.id == value) {
                 for (i = 0; i < 10; i++) {
                     sample.otu_ids.push(`OTU ${s.otu_ids[i]}`);
-                    sample.otu_labels.push(String(s.otu_labels[i]));
+                    sample.otu_labels.push(s.otu_labels[i]);
                     sample.sample_values.push(s.sample_values[i]);
                 }
             }
