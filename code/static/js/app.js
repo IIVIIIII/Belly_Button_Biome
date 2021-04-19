@@ -67,7 +67,8 @@ function optionChanged(value) {
             value: data.metadata.filter(s => s.id == value)[0].wfreq,
             title: { text: "Wash Frequency" },
             type: "indicator",
-            mode: "gauge+number"
+            mode: "gauge+number",
+            gauge: {axis: {range: [0, 7]}}
         };
         
         var gaugeLayout = {margin: { t: 0, b: 0 } };
