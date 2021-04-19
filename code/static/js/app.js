@@ -17,6 +17,12 @@ function optionChanged(value) {
 
         var bubbleSample = data.samples.filter(s => s.id == value)[0];
 
+        scale = d3.scaleLinear()
+            .domain([0, d3.max(bubbleSample.sample_values)])
+            .range([0, 100])
+        
+        bubbleSample.sizes = bubbleSample.sample_values.map(s => scale(s))
+
         barSample = {
             otu_ids: bubbleSample.otu_ids.slice(0, 10).map(s => `OTU ${s}`).reverse(),
             otu_labels: bubbleSample.otu_labels.slice(0, 10).reverse(),
@@ -39,23 +45,6 @@ function optionChanged(value) {
                     .append("h5")
                     .text(d => d)
 
-        // data.metadata.forEach(s => {
-        //     if (s.id == value) {
-        //         var subject = [];
-
-        //         Object.entries(s).forEach(([key, value]) => {
-        //             subject.push(`${key}: ${value}`)
-        //         })
-
-        //         console.log(subject)
-
-        //         d3.select("#sample-metadata").selectAll("h5")
-        //             .data(subject)
-        //             .enter()
-        //             .append("h5")
-        //             .text(d => d)
-        //     }
-        // })
 
         var barTrace = {
             x: barSample.sample_values,
