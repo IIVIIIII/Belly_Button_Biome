@@ -34,8 +34,6 @@ function optionChanged(value) {
             .map(([key, value]) => {return `${key}: ${value}`
         })
 
-        console.log(subject)
-
         d3.select("#sample-metadata").selectAll("h5")
         .remove()
 
@@ -62,6 +60,20 @@ function optionChanged(value) {
                 size: bubbleSample.sizes
             }
         }
+
+
+        var gaugeTrace = {
+            domain: { x: [0, 1], y: [0, 1] },
+            value: data.metadata.filter(s => s.id == value)[0].wfreq,
+            title: { text: "Wash Frequency" },
+            type: "indicator",
+            mode: "gauge+number"
+        };
+        
+        var gaugeLayout = {margin: { t: 0, b: 0 } };
+        Plotly.newPlot('gauge', [gaugeTrace], gaugeLayout);
+
+
     
         var barLayout = {
             title: "Highest sample values",
