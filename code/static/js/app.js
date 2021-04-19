@@ -29,9 +29,6 @@ function optionChanged(value) {
             sample_values: bubbleSample.sample_values.slice(0, 10).reverse()
         };
 
-        console.log(barSample)
-        console.log(bubbleSample)
-
          var subject = Object
             .entries(data.metadata.filter(s => s.id == value)[0])
             .map(([key, value]) => {return `${key}: ${value}`
@@ -45,7 +42,6 @@ function optionChanged(value) {
                     .append("h5")
                     .text(d => d)
 
-
         var barTrace = {
             x: barSample.sample_values,
             y: barSample.otu_ids,
@@ -58,16 +54,23 @@ function optionChanged(value) {
             x: bubbleSample.otu_ids,
             y: bubbleSample.sample_values,
             text: bubbleSample.otu_labels,
-            mode: "markers"
+            mode: "markers",
+            marker: {
+                size: bubbleSample.sizes
+            }
         }
     
-        var layout = {
-            title: "biodiversity",
+        var barLayout = {
+            title: "Highest sample values",
         }
     
-        Plotly.newPlot("bar", [barTrace], layout);
+        var bubbleLayout = {
+            title: "All sample values",
+        }
 
-        Plotly.newPlot("bubble", [bubbleTrace], layout);
+        Plotly.newPlot("bar", [barTrace], barLayout);
+
+        Plotly.newPlot("bubble", [bubbleTrace], bubbleLayout);
     
 
     })
