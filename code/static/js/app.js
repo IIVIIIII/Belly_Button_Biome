@@ -37,10 +37,13 @@ function optionChanged(value) {
         console.log(subject)
 
         d3.select("#sample-metadata").selectAll("h5")
-                    .data(subject)
-                    .enter()
-                    .append("h5")
-                    .text(d => d)
+        .remove()
+
+        d3.select("#sample-metadata").selectAll("h5")
+            .data(subject)
+            .enter()
+            .append("h5")
+            .text(d => d)
 
         var barTrace = {
             x: barSample.sample_values,
