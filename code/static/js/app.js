@@ -68,11 +68,12 @@ function optionChanged(value) {
             title: { text: "Wash Frequency" },
             type: "indicator",
             mode: "gauge+number",
-            gauge: {axis: {range: [0, 7]}}
+            gauge: {axis: {range: [0, 9]}}
         };
         
         var gaugeLayout = {margin: { t: 0, b: 0 } };
-        Plotly.newPlot('gauge', [gaugeTrace], gaugeLayout);
+
+        
 
 
     
@@ -83,6 +84,8 @@ function optionChanged(value) {
         var bubbleLayout = {
             title: "All sample values",
         }
+
+        Plotly.newPlot('gauge', [gaugeTrace], gaugeLayout);
 
         Plotly.newPlot("bar", [barTrace], barLayout);
 
