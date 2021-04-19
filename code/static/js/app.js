@@ -18,7 +18,7 @@ function optionChanged(value) {
         var bubbleSample = data.samples.filter(s => s.id == value)[0];
 
         var barSample = {
-            otu_ids: bubbleSample.otu_ids.sort((a, b) => a - b).slice(0, 10),
+            otu_ids: bubbleSample.otu_ids.sort((a, b) => a - b).slice(0, 10).map(s => `${s}`),
             otu_labels: bubbleSample.otu_labels.sort((a, b) => a - b).slice(0, 10),
             sample_values: bubbleSample.sample_values.sort((a, b) => a - b).slice(0, 10)
         };
@@ -38,7 +38,7 @@ function optionChanged(value) {
         //     }
         // })
 
-        console.log(barSample)
+        console.log(barSample.otu_ids)
         console.log(bubbleSample)
 
 
@@ -83,8 +83,6 @@ function optionChanged(value) {
 
         Plotly.newPlot("bubble", [bubbleTrace], layout);
     
-
-
 
     })
 
