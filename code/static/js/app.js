@@ -14,14 +14,23 @@ d3.json("samples.json").then(data => {
 function optionChanged(value) {
 
     d3.json("samples.json").then(data => {
+
         
+
         var bubbleSample = data.samples.filter(s => s.id == value)[0];
 
         var barSample = {
-            otu_ids: bubbleSample.otu_ids.sort((a, b) => a - b).slice(0, 10).map(s => `${s}`),
-            otu_labels: bubbleSample.otu_labels.sort((a, b) => a - b).slice(0, 10),
-            sample_values: bubbleSample.sample_values.sort((a, b) => a - b).slice(0, 10)
+            otu_ids: bubbleSample.otu_ids.slice(0, 10).map(s => `OTU ${s}`).reverse(),
+            otu_labels: bubbleSample.otu_labels.slice(0, 10).reverse(),
+            sample_values: bubbleSample.sample_values.slice(0, 10).reverse()
         };
+
+        // bubbleSample = {}
+        // var barSample = {
+        //     otu_ids: [],
+        //     otu_labels: [],
+        //     sample_values: []
+        // };
 
         // data.samples.forEach(s => {
         //     if (s.id == value) {
@@ -38,7 +47,7 @@ function optionChanged(value) {
         //     }
         // })
 
-        console.log(barSample.otu_ids)
+        console.log(barSample)
         console.log(bubbleSample)
 
 
