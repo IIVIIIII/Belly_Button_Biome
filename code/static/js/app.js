@@ -14,16 +14,14 @@ d3.json("samples.json").then(data => {
 function optionChanged(value) {
 
     d3.json("samples.json").then(data => {
-
-        toTen = [0,1,2,3,4,5,6,7,8,9]
-
-        var barSample = {
-            otu_ids: [],
-            otu_labels: [],
-            sample_values: []
-        };
         
         var bubbleSample = data.samples.filter(s => s.id == value)[0];
+
+        var barSample = {
+            otu_ids: bubbleSample.otu_ids.sort((a, b) => a - b).slice(0, 10),
+            otu_labels: bubbleSample.otu_labels.sort((a, b) => a - b).slice(0, 10),
+            sample_values: bubbleSample.sample_values.sort((a, b) => a - b).slice(0, 10)
+        };
 
         // data.samples.forEach(s => {
         //     if (s.id == value) {
