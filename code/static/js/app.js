@@ -45,12 +45,11 @@ function optionChanged(value) {
 
                 console.log(subject)
 
-                // d3.select("#selDataset").selectAll("option")
-                //     .data(data.names)
-                //     .enter()
-                //     .append("option")
-                //     .attr("id", id => id)
-                //     .text(d => d)
+                d3.select("#sample-metadata").selectAll("h5")
+                    .data(subject)
+                    .enter()
+                    .append("h5")
+                    .text(d => d)
             }
         })
 
