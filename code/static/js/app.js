@@ -20,10 +20,12 @@ function optionChanged(value) {
             otu_labels: [],
             sample_values: []
         }
-
+        
+        var bubbleSample = {}
 
         data.samples.forEach(s => {
             if (s.id == value) {
+                bubbleSample = s
                 for (i = 0; i < 10; i++) {
                     sample.otu_ids.push(`OTU ${s.otu_ids[i]}`);
                     sample.otu_labels.push(s.otu_labels[i]);
@@ -34,6 +36,10 @@ function optionChanged(value) {
             sample.sample_values.sort((a, b) => a - b);
             }
         })
+
+        console.log(sample)
+        console.log(bubbleSample)
+
 
         data.metadata.forEach(s => {
             if (s.id == value) {
@@ -53,19 +59,28 @@ function optionChanged(value) {
             }
         })
 
-        var trace = {
+        var barTrace = {
             x: sample.sample_values,
             y: sample.otu_ids,
             text: sample.otu_labels,
             orientation: "h",
             type: "bar"
         }
+
+        var bubbleTrace = {
+            x: bubbleSample.otu_ids,
+            y: bubbleSample.sample_values,
+            text: sample.otu_labels,
+            mode: "markers"
+        }
     
         var layout = {
             title: "biodiversity",
         }
     
-        Plotly.newPlot("bar", [trace], layout);
+        Plotly.newPlot("bar", [barTrace], layout);
+
+        Plotly.newPlot("bubble", [bubbleTrace], layout);
     
 
 
