@@ -15,27 +15,30 @@ function optionChanged(value) {
 
     d3.json("samples.json").then(data => {
 
+        toTen = [0,1,2,3,4,5,6,7,8,9]
+
         var barSample = {
             otu_ids: [],
             otu_labels: [],
             sample_values: []
         };
         
-        var bubbleSample = {};
+        var bubbleSample = data.samples.filter(s => s.id == value)[0];
 
-        data.samples.forEach(s => {
-            if (s.id == value) {
-                bubbleSample = s
-                for (i = 0; i < 10; i++) {
-                    barSample.otu_ids.push(`OTU ${s.otu_ids[i]}`);
-                    barSample.otu_labels.push(s.otu_labels[i]);
-                    barSample.sample_values.push(s.sample_values[i]);
-                }
-            barSample.otu_ids.sort((a, b) => a - b);
-            barSample.otu_labels.sort((a, b) => a - b);
-            barSample.sample_values.sort((a, b) => a - b);
-            }
-        })
+        // data.samples.forEach(s => {
+        //     if (s.id == value) {
+
+        //         bubbleSample = s
+        //         for (i = 0; i < 10; i++) {
+        //             barSample.otu_ids.push(`OTU ${s.otu_ids[i]}`);
+        //             barSample.otu_labels.push(s.otu_labels[i]);
+        //             barSample.sample_values.push(s.sample_values[i]);
+        //         }
+        //     barSample.otu_ids.sort((a, b) => a - b);
+        //     barSample.otu_labels.sort((a, b) => a - b);
+        //     barSample.sample_values.sort((a, b) => a - b);
+        //     }
+        // })
 
         console.log(barSample)
         console.log(bubbleSample)
