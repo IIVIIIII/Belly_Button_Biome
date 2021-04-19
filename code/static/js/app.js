@@ -40,18 +40,24 @@ function optionChanged(value) {
         console.log(barSample)
         console.log(bubbleSample)
 
-        
-        var subject = [];
 
-        Object.entries(data.metadata.filter(s => {s.id == value}))
-            .forEach(([key, value]) => {subject.push(`${key}: ${value}`)})
-        
-        d3.select("#sample-metadata").selectAll("h5")
-            .data(subject)
-            .enter()
-            .append("h5")
-            .text(d => d)
+        data.metadata.forEach(s => {
+            if (s.id == value) {
+                var subject = [];
 
+                Object.entries(s).forEach(([key, value]) => {
+                    subject.push(`${key}: ${value}`)
+                })
+
+                console.log(subject)
+
+                d3.select("#sample-metadata").selectAll("h5")
+                    .data(subject)
+                    .enter()
+                    .append("h5")
+                    .text(d => d)
+            }
+        })
 
         var barTrace = {
             x: barSample.sample_values,
