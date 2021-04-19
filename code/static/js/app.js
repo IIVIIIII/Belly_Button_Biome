@@ -56,11 +56,8 @@ function optionChanged(value) {
             y: bubbleSample.sample_values,
             text: bubbleSample.otu_labels,
             mode: "markers",
-            marker: {
-                size: bubbleSample.sizes
-            }
+            marker: {size: bubbleSample.sizes}
         }
-
 
         var gaugeTrace = {
             domain: { x: [0, 1], y: [0, 1] },
@@ -72,18 +69,10 @@ function optionChanged(value) {
         };
         
         var gaugeLayout = {margin: { t: 0, b: 0 } };
-
-        
-
-
     
-        var barLayout = {
-            title: "Highest sample values",
-        }
+        var barLayout = {title: "Highest sample values"}
     
-        var bubbleLayout = {
-            title: "All sample values",
-        }
+        var bubbleLayout = {title: "All sample values"}
 
         Plotly.newPlot('gauge', [gaugeTrace], gaugeLayout);
 
