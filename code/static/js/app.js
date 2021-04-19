@@ -15,29 +15,29 @@ function optionChanged(value) {
 
     d3.json("samples.json").then(data => {
 
-        sample = {
+        var barSample = {
             otu_ids: [],
             otu_labels: [],
             sample_values: []
-        }
+        };
         
-        var bubbleSample = {}
+        var bubbleSample = {};
 
         data.samples.forEach(s => {
             if (s.id == value) {
                 bubbleSample = s
                 for (i = 0; i < 10; i++) {
-                    sample.otu_ids.push(`OTU ${s.otu_ids[i]}`);
-                    sample.otu_labels.push(s.otu_labels[i]);
-                    sample.sample_values.push(s.sample_values[i]);
+                    barSample.otu_ids.push(`OTU ${s.otu_ids[i]}`);
+                    barSample.otu_labels.push(s.otu_labels[i]);
+                    barSample.sample_values.push(s.sample_values[i]);
                 }
-            sample.otu_ids.sort((a, b) => a - b);
-            sample.otu_labels.sort((a, b) => a - b);
-            sample.sample_values.sort((a, b) => a - b);
+            barSample.otu_ids.sort((a, b) => a - b);
+            barSample.otu_labels.sort((a, b) => a - b);
+            barSample.sample_values.sort((a, b) => a - b);
             }
         })
 
-        console.log(sample)
+        console.log(barSample)
         console.log(bubbleSample)
 
 
@@ -60,9 +60,9 @@ function optionChanged(value) {
         })
 
         var barTrace = {
-            x: sample.sample_values,
-            y: sample.otu_ids,
-            text: sample.otu_labels,
+            x: barSample.sample_values,
+            y: barSample.otu_ids,
+            text: barSample.otu_labels,
             orientation: "h",
             type: "bar"
         }
@@ -70,7 +70,7 @@ function optionChanged(value) {
         var bubbleTrace = {
             x: bubbleSample.otu_ids,
             y: bubbleSample.sample_values,
-            text: sample.otu_labels,
+            text: bubbleSample.otu_labels,
             mode: "markers"
         }
     
