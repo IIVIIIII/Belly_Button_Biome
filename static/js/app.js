@@ -69,22 +69,14 @@ function optionChanged(value) {
         };
         
         var gaugeLayout = {margin: { t: 0, b: 0 } };
-    
         var barLayout = {title: "Highest sample values"}
-    
         var bubbleLayout = {title: "All sample values"}
 
         Plotly.newPlot('gauge', [gaugeTrace], gaugeLayout);
-
         Plotly.newPlot("bar", [barTrace], barLayout);
-
         Plotly.newPlot("bubble", [bubbleTrace], bubbleLayout);
     
-
     })
-
-    
-
 }
     
 
