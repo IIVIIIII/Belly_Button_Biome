@@ -14,7 +14,7 @@ d3.json("../resources/samples.json").then(data => {
             .domain([0, d3.max(bubbleSample.sample_values)])
             .range([0, 100])
 
-    bubbleSample.sizes = bubbleSample.sample_values.map(s => scale(s))
+    ubbleSample.sizes = bubbleSample.sample_values.map(s => scale(s))
 
     barSample = {
         otu_ids: bubbleSample.otu_ids.slice(0, 10).map(s => `OTU ${s}`).reverse(),
