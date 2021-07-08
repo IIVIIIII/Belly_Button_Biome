@@ -1,4 +1,4 @@
-d3.json("../resources/samples.json").then(data => {
+d3.json("../../resources/samples.json").then(data => {
 
     var options = d3.select("#selDataset").selectAll("option");
 
