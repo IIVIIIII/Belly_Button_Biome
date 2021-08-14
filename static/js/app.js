@@ -70,7 +70,7 @@ d3.json("../../resources/samples.json").then(data => {
 
 function optionChanged(value) {
 
-    d3.json("samples.json").then(data => {
+    d3.json("../../resources/samples.json").then(data => {
 
         var bubbleSample = data.samples.filter(s => s.id == value)[0];
 
