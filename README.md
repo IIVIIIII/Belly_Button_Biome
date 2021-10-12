@@ -15,3 +15,10 @@ The data depicted includes:
 
 ### All Sample Values
 ![alt text](https://github.com/IIVIIIII/Belly_Button_Biome/blob/main/images/all_sample%20values.png?raw=true)
+
+Tools required:
+- HTML
+- JavaScript
+- Bootstrap
+- D3
+- Plotly
